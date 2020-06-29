@@ -12,8 +12,7 @@ import {
   uniqueId,
   property,
   last,
-  keyBy,
-  reject,
+  compact,
 } from 'lodash';
 import axiosInstance from 'services/AxiosInstance';
 import useGlobalStore from 'store/GlobalStore';
@@ -131,25 +130,24 @@ export default function (props) {
   offerIds = groupBy(offerIds, 'offer_id');
   offerIds = Object.keys(offerIds);
 
-  const rejectMatchedOffer = (ids, target) =>
-    reject(ids, (id) => id === target);
-
   if (student.StudentPathways) {
     for (let i = 0; i < student.StudentPathways.length; i++) {
+      const newOfferIds = [];
       if (student.StudentPathways[i].StudentPathway) {
         const pathwayId = student.StudentPathways[i].StudentPathway.pathway_id;
         const _pathway = pathwayStore.entities[pathwayId];
-        const keyedOffers = keyBy(_pathway.GroupsOfOffers, 'offer_id');
+        let groupOffers = groupBy(_pathway.GroupsOfOffers, 'offer_id');
+        groupOffers = Object.keys(groupOffers).sort(
+          (a, b) => Number(a) - Number(b)
+        );
 
-        for (let j = 0; j < offerIds.length; j++) {
-          if (keyedOffers[Number(offerIds[j])]) {
-            offerIds = rejectMatchedOffer(offerIds, offerIds[j]);
-          }
-
-          if (keyedOffers[Number(offerIds[j - 1])]) {
-            offerIds = rejectMatchedOffer(offerIds, offerIds[j]);
+        for (let j = 0; j <= offerIds.length; j++) {
+          if (!groupOffers.includes(offerIds[j])) {
+            newOfferIds.push(offerIds[j]);
           }
         }
+
+        offerIds = compact(newOfferIds);
       }
     }
   }

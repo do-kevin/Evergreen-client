@@ -147,7 +147,7 @@ export default function SelectOptionsContainer(props) {
                             {unit.name}
                           </span>
                           <Button
-                            className="flex justify-center rounded-l-none rounded-r"
+                            className="flex justify-center rounded-l-none rounded-r items-center"
                             type="primary"
                             size="small"
                             danger

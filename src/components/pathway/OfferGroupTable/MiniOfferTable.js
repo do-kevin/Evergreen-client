@@ -33,9 +33,9 @@ class MiniOfferTable extends PureComponent {
           dataIndex="offer_id"
           key="offer_id"
           render={(offerId, record, index) => {
-            const offer = offerStore.entities[offerId];
+            const offer = offerStore ? offerStore.entities[offerId] : null;
             return {
-              children: offer.name || '',
+              children: offer ? offer.name : '',
             };
           }}
         />
@@ -44,7 +44,12 @@ class MiniOfferTable extends PureComponent {
           dataIndex="offer_id"
           key="createdAt"
           render={(offerId, record, index) => {
-            const offer = offerStore.entities[offerId];
+            const offer = offerStore ? offerStore.entities[offerId] : null;
+            if (!offer) {
+              return {
+                children: null,
+              };
+            }
             return {
               children: offer.createdAt
                 ? dayjs(offer.createdAt).format('MM-DD-YYYY')

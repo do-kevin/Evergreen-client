@@ -66,7 +66,7 @@ class GroupTable extends Component {
             let totalPay = 0;
             let totalCredit = 0;
             each(offers, function (o) {
-              if (offerStore.entities[o.offer_id]) {
+              if (offerStore && offerStore.entities[o.offer_id]) {
                 const offer = offerStore.entities[o.offer_id];
                 totalCost += offer.cost;
                 totalPay += offer.pay;
@@ -200,4 +200,9 @@ class GroupTable extends Component {
   }
 }
 
-export default GroupTable;
+function GroupTableHOC(props) {
+  const offerStore = OfferStore.useContainer();
+  return <GroupTable {...props} offerStore={offerStore} />;
+}
+
+export default GroupTableHOC;

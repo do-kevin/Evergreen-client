@@ -77,7 +77,7 @@ export default function DataFieldTable({
     ),
     add: (
       <Button
-        className="flex justify-center"
+        className="flex justify-center items-center"
         type="primary"
         shape="circle"
         size="small"
@@ -97,7 +97,7 @@ export default function DataFieldTable({
       ...row,
       add: (
         <Button
-          className="flex justify-center"
+          className="flex justify-center items-center"
           key={index.toString()}
           type="primary"
           shape="circle"

@@ -79,3 +79,8 @@ code {
 .ant-notification-notice {
   padding: 12px !important;
 }
+
+.ant-message-notice-content .ant-message-custom-content {
+  display: flex;
+  align-items: center;
+}

@@ -88,6 +88,11 @@ export default function ({
           start_date: dayjs().toISOString(),
         }
       );
+
+      if (response.status === 200 && typeof response.data === 'string') {
+        message.success(`You've already applied or enrolled in ${data.name}`);
+        return response.data;
+      }
       if (response.status === 200) {
         message.success(`You've enrolled in ${data.name}`);
       }
