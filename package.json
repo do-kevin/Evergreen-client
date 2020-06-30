@@ -1,7 +1,6 @@
 {
   "name": "evergreen-client",
   "version": "0.1.0",
-  "homepage": "http://do-kevin.github.io/SchoolSector-client",
   "private": true,
   "proxy": "http://localhost:8888/api/v1",
   "dependencies": {
