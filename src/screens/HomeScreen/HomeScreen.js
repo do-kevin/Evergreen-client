@@ -37,7 +37,6 @@ import useAxios, { configure } from 'axios-hooks';
 import axiosInstance from 'services/AxiosInstance';
 import AuthService from 'services/AuthService';
 import useGlobalStore from 'store/GlobalStore';
-import Logo from 'assets/svgs/evergreen-optimized-logo.svg';
 import './home-screen.scss';
 
 configure({
@@ -347,13 +346,8 @@ function HomeScreen() {
           >
             {(!search && (
               <Row className="flex justify-center items-center select-none">
-                <img
-                  className="homeScreen__brandLogo relative mr-1"
-                  src={Logo}
-                  alt="logo"
-                />
                 <span className="homeScreen__brandName font-bold flex items-center">
-                  EVERGREEN
+                  SCHOOL SECTOR
                 </span>
               </Row>
             )) || (

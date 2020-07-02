@@ -78,7 +78,7 @@ function Auth() {
       return <RoleSelectionScreen />;
     case 'logout':
       AuthService.logout();
-      return <div />;
+      return <Redirect to={{ pathname: '/' }} />;
     case 'user':
       if (!user_id) {
         return <Redirect to={{ pathname: '/error/500' }} />;
