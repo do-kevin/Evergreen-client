@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Row, Col, Input, Form, Upload, message } from 'antd';
+import { Layout, Row, Col, Input, Form, Upload, message, Alert } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import 'assets/scss/antd-overrides.scss';
@@ -66,6 +66,7 @@ function ImageUploadAndNameInputs(props) {
               showUploadList={false}
               onChange={onChangeUpload}
               beforeUpload={beforeUpload}
+              disabled
             >
               {imageUrl ? (
                 <img src={imageUrl} alt="upload" />
@@ -91,6 +92,7 @@ function ImageUploadAndNameInputs(props) {
               showUploadList={false}
               onChange={onChangeBannerUpload}
               beforeUpload={beforeUpload}
+              disabled
             >
               {bannerImageUrl ? (
                 <img src={bannerImageUrl} alt="upload" />
@@ -105,6 +107,13 @@ function ImageUploadAndNameInputs(props) {
             </Upload>
           </Form.Item>
         </Col>
+      </Row>
+      <Row>
+        <Alert
+          className="rounded w-full text-center"
+          type="warning"
+          message="Image uploading is disabled."
+        />
       </Row>
       <Row gutter={8}>
         <Col span={24}>

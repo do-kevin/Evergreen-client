@@ -61,7 +61,7 @@ export default function (props) {
           {(offer && offer.RelatedOffers && offer.RelatedOffers.length && (
             <>
               <TitleDivider
-                title={'RELATED OFFERS'}
+                title={'RELATED COURSES'}
                 align="center"
                 classNames={{ middleSpan: 'text-base' }}
               />

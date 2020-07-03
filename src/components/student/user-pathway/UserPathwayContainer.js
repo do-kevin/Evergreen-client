@@ -92,7 +92,7 @@ export default function (props) {
         <section style={{ maxWidth: 896 }}>
           {(groupKeys && groupKeys.length && (
             <TitleDivider
-              title={'GROUPS OF OFFERS'}
+              title={'GROUPS OF COURSES'}
               align="center"
               classNames={{ middleSpan: 'text-base' }}
             />

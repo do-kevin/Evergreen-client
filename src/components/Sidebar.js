@@ -25,7 +25,7 @@ const routesList = (role) => {
     },
     {
       path: 'offers',
-      name: 'Offers',
+      name: 'Courses',
       icon: faDollarSign,
       enabled: ['admin', 'provider'].includes(role),
     },
@@ -37,7 +37,7 @@ const routesList = (role) => {
     },
     {
       path: 'pathways',
-      name: 'Pathways',
+      name: 'Curriculums',
       icon: faRoute,
       enabled: ['admin', 'provider'].includes(role),
     },

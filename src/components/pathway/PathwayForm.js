@@ -81,7 +81,7 @@ export default function PathwayForm({
           </Col>
         </Row>
       </ImageUploadAndNameInputs>
-      <TitleDivider title={'Add Offers Group'} />
+      <TitleDivider title={'Add Course Group'} />
       <Row>
         <OfferGroupTable
           offerStore={offerStore}

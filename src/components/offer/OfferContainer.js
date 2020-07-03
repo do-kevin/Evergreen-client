@@ -79,7 +79,7 @@ export default function OfferContainer(props) {
       });
       return;
     }
-    message.error("Could not receive offer's information.");
+    message.error("Could not receive course's information.");
   };
 
   const openBatchEnrollmentModal = () => {
@@ -95,7 +95,7 @@ export default function OfferContainer(props) {
       history.push(`${basePath}/enrollments?offer=${offer.id}`);
       return;
     }
-    message.error("Could not receive offer's information.");
+    message.error("Could not receive course's information.");
   };
 
   if (providerError || datafieldError || offerError) {
@@ -134,17 +134,14 @@ export default function OfferContainer(props) {
     <Layout className="bg-transparent">
       <ProviderLogOutTopbar role={role} onClick={openProviderUpdateModal}>
         <Col span={14}>
-          <SearchHeader
-            title="NEW OFFERS / OPPORTUNITIES"
-            onSearch={handleDataSearch}
-          >
+          <SearchHeader title="COURSES" onSearch={handleDataSearch}>
             <FaPlusCircleButton
               onMouseEnter={() => {
                 FormModal.preload();
                 OfferCreationContainer.preload();
               }}
               onClick={() => setOpenable({ ...openable, formModal: true })}
-              text="OFFER"
+              text="COURSE"
             />
           </SearchHeader>
         </Col>
@@ -161,7 +158,7 @@ export default function OfferContainer(props) {
             role={role}
           />
           <FormModal
-            title="New Offer / Opportunity"
+            title="New Course"
             visible={openable.formModal}
             FormComponent={OfferCreationContainer}
             role={role}

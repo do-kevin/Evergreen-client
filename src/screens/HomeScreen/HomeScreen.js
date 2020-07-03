@@ -406,7 +406,7 @@ function HomeScreen() {
                               </Col>
                             </Row>
                             <Row className="justify-between mb-1" gutter={6}>
-                              <Col>Offers</Col>
+                              <Col>Courses</Col>
                               <Col>
                                 <Switch
                                   size="small"
@@ -416,7 +416,7 @@ function HomeScreen() {
                               </Col>
                             </Row>
                             <Row className="justify-between" gutter={6}>
-                              <Col>Pathways</Col>
+                              <Col>Curriculums</Col>
                               <Col>
                                 <Switch
                                   size="small"
@@ -504,7 +504,7 @@ function HomeScreen() {
                           className="py-0 px-0 pr-6 text-gray-500"
                           size="small"
                         >
-                          User Pathway
+                          My Enrollments
                         </Button>
                       </Link>
                       <Button

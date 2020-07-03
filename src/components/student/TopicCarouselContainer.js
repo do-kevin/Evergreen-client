@@ -109,7 +109,7 @@ export default function () {
   return (
     <div className="h-auto w-full">
       <TitleDivider
-        title={'OFFERS BY TOPICS'}
+        title={'COURSES BY TOPICS'}
         align="center"
         classNames={{ middleSpan: 'text-base' }}
       />

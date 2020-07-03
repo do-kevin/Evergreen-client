@@ -268,7 +268,7 @@ export default function ProviderUpdateModal(props) {
             onChangeBannerUpload={onChangeBannerUpload}
           />
           <section className="mt-2">
-            <label className="mb-2 block">Offers - Table</label>
+            <label className="mb-2 block">Courses - Table</label>
             <Table
               dataSource={Offers}
               rowClassName={() => 'antd-row'}
@@ -280,7 +280,7 @@ export default function ProviderUpdateModal(props) {
             </Table>
           </section>
           <section className="mt-2">
-            <label className="mb-2 block">Pathways - Table</label>
+            <label className="mb-2 block">Curriculums - Table</label>
             <Table
               dataSource={Pathways}
               rowKey="id"

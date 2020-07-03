@@ -88,7 +88,7 @@ export default function () {
         })}
       </Carousel>
       <TitleDivider
-        title={'LOCAL PROMOS'}
+        title={'LOCAL PROMOTIONS'}
         align="center"
         classNames={{ middleSpan: 'text-base' }}
       />

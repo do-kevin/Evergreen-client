@@ -81,7 +81,7 @@ export default function (props) {
           </Col>
         </Row>
         <Row className="justify-between mb-1" gutter={6}>
-          <Col>Offers</Col>
+          <Col>Courses</Col>
           <Col>
             <Switch
               size="small"
@@ -91,7 +91,7 @@ export default function (props) {
           </Col>
         </Row>
         <Row className="justify-between" gutter={6}>
-          <Col>Pathways</Col>
+          <Col>Curriculums</Col>
           <Col>
             <Switch
               size="small"

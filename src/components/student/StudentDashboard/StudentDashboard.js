@@ -155,7 +155,7 @@ export default function (props) {
   return (
     <main className="pb-4">
       <TitleDivider
-        title={'Enrolled Pathways'}
+        title={'Enrolled Curriculums'}
         align="center"
         classNames={{ middleSpan: 'text-base' }}
       />
@@ -186,7 +186,7 @@ export default function (props) {
         />
       )}
       <TitleDivider
-        title={'Enrolled Offers'}
+        title={'Enrolled Courses'}
         align="center"
         classNames={{ middleSpan: 'text-base' }}
       />
@@ -222,7 +222,7 @@ export default function (props) {
         <Alert
           className="mx-auto text-center rounded"
           type="info"
-          message="You haven't enrolled in any offers yet."
+          message="You haven't enrolled in any courses yet."
         />
       )}
     </main>
