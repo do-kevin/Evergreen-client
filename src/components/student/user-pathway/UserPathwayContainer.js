@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { groupBy, property, uniqueId, keyBy, head, last, sortBy } from 'lodash';
 import dayjs from 'dayjs';
 import useGlobalStore from 'store/GlobalStore';
@@ -176,17 +175,15 @@ export default function (props) {
                     }
 
                     return (
-                      <Link to={`/home/offer/${offer.id}`} key={idx}>
-                        <InfoCard
-                          className="mb-4"
-                          data={offer}
-                          provider={p}
-                          key={uniqueId('card_')}
-                          groupedDataFields={groupedDataFields}
-                          latestEnrollment={latestEnrollment}
-                          enableStatus={true}
-                        />
-                      </Link>
+                      <InfoCard
+                        className="mb-4"
+                        data={offer}
+                        provider={p}
+                        key={uniqueId('card_')}
+                        groupedDataFields={groupedDataFields}
+                        latestEnrollment={latestEnrollment}
+                        enableStatus={true}
+                      />
                     );
                   })}
                 </div>

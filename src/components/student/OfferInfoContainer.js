@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { last, groupBy, property, uniqueId } from 'lodash';
 import useGlobalStore from 'store/GlobalStore';
 import axiosInstance from 'services/AxiosInstance';
@@ -82,16 +82,12 @@ export default function (props) {
               >
                 {offer.RelatedOffers.map((o, index) => {
                   return (
-                    <Link
+                    <InfoCard
                       key={uniqueId('related_card_')}
-                      to={o && o.id ? `/home/offer/${o.id}` : null}
-                    >
-                      <InfoCard
-                        data={o}
-                        provider={provider}
-                        groupedDataFields={groupedDataFields}
-                      />
-                    </Link>
+                      data={o}
+                      provider={provider}
+                      groupedDataFields={groupedDataFields}
+                    />
                   );
                 })}
               </Carousel>
@@ -128,16 +124,12 @@ export default function (props) {
                 >
                   {offer.PrerequisiteOffers.map((o, index) => {
                     return (
-                      <Link
+                      <InfoCard
                         key={uniqueId('prereq_card_')}
-                        to={o && o.id ? `/home/offer/${o.id}` : null}
-                      >
-                        <InfoCard
-                          data={o}
-                          provider={provider}
-                          groupedDataFields={groupedDataFields}
-                        />
-                      </Link>
+                        data={o}
+                        provider={provider}
+                        groupedDataFields={groupedDataFields}
+                      />
                     );
                   })}
                 </Carousel>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Card, Button } from 'antd';
 import { compact, groupBy, property } from 'lodash';
 import useGlobalStore from 'store/GlobalStore';
@@ -93,15 +92,13 @@ export default function () {
       }
 
       return (
-        <Link to={`/home/offer/${offer.id}`} key={index}>
-          <InfoCard
-            key={index}
-            className="mx-auto mb-4 w-full"
-            data={offer}
-            provider={p}
-            groupedDataFields={groupedDataFields}
-          />
-        </Link>
+        <InfoCard
+          key={index}
+          className="mx-auto mb-4 w-full"
+          data={offer}
+          provider={p}
+          groupedDataFields={groupedDataFields}
+        />
       );
     });
   };

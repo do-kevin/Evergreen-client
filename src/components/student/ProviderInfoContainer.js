@@ -77,16 +77,14 @@ export default function (props) {
                 p = providerStore.entities[o.provider_id];
               }
               return (
-                <Link to={o && o.id ? `/home/offer/${o.id}` : null}>
-                  <InfoCard
-                    className="mb-4"
-                    key={`${o.name}_${index}`}
-                    data={o}
-                    provider={p}
-                    groupedDataFields={groupedDataFields}
-                    actions={[]}
-                  />
-                </Link>
+                <InfoCard
+                  className="mb-4"
+                  key={`${o.name}_${index}`}
+                  data={o}
+                  provider={p}
+                  groupedDataFields={groupedDataFields}
+                  actions={[]}
+                />
               );
             })) ||
             null}

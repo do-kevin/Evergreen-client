@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Alert } from 'antd';
 import useAxios, { configure } from 'axios-hooks';
 import {
@@ -206,17 +205,15 @@ export default function (props) {
             latestEnrollment = last(myEnrollments[offerId]);
           }
           return offer && offer.id ? (
-            <Link to={`/home/offer/${offer.id}`} key={index}>
-              <InfoCard
-                className="mb-4"
-                data={offer}
-                provider={p}
-                key={uniqueId('card_')}
-                groupedDataFields={groupedDataFields}
-                latestEnrollment={latestEnrollment}
-                enableStatus={true}
-              />
-            </Link>
+            <InfoCard
+              className="mb-4"
+              data={offer}
+              provider={p}
+              key={uniqueId('card_')}
+              groupedDataFields={groupedDataFields}
+              latestEnrollment={latestEnrollment}
+              enableStatus={true}
+            />
           ) : null;
         })) || (
         <Alert

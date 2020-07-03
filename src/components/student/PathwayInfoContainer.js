@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { groupBy, property, uniqueId } from 'lodash';
 import useGlobalStore from 'store/GlobalStore';
 import axiosInstance from 'services/AxiosInstance';
@@ -99,18 +98,13 @@ export default function (props) {
                       p = offer.Provider;
                     }
                     return (
-                      <Link
+                      <InfoCard
                         key={uniqueId('card_')}
-                        to={offer && offer.id ? `/home/offer/${offer.id}` : '/'}
-                        disabled={offer && offer.id ? false : true}
-                      >
-                        <InfoCard
-                          className="mb-4"
-                          data={offer}
-                          provider={p}
-                          groupedDataFields={groupedDataFields}
-                        />
-                      </Link>
+                        className="mb-4"
+                        data={offer}
+                        provider={p}
+                        groupedDataFields={groupedDataFields}
+                      />
                     );
                   })}
                 </div>

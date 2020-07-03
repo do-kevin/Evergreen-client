@@ -145,17 +145,8 @@ export default function ({
         <Row>
           <Col span={12}>
             <Row className="mb-1 flex-col">
-              {external_url ? (
-                <a
-                  className="text-left font-bold"
-                  onClick={(e) => e.stopPropagation()}
-                  style={{ zIndex: 33 }}
-                  href={external_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {name}
-                </a>
+              {data && data.id ? (
+                <Link to={`/home/offer/${data.id}`}>{name}</Link>
               ) : (
                 <span className="text-left font-bold">{name}</span>
               )}
@@ -199,6 +190,16 @@ export default function ({
               <li>Credit : {`${Number(credit) || '---'}`}</li>
             </ol>
           </Col>
+          <a
+            className="text-center bg-blue-500 hover:bg-blue-700 hover:text-white text-white py-1 px-3 text-xs rounded"
+            onClick={(e) => e.stopPropagation()}
+            style={{ zIndex: 33 }}
+            href={external_url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Website
+          </a>
         </Row>
       </Card>
       {(enableStatus && <InfoCardFooter enrollment={latestEnrollment} />) ||
