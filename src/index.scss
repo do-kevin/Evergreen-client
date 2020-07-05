@@ -1,11 +1,15 @@
 @import '~antd/dist/antd.min.css';
 @import '~react-responsive-carousel/lib/styles/carousel.min.css';
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+// Conflicts with antd css
+// @tailwind base;
+
+$themeColor: hsl(214, 79%, 15%);
+
 html {
-  background-color: rgba(247, 250, 252, 1);
+  background-color: hsl(214, 79%, 15%);
 }
 
 body {
@@ -84,3 +88,43 @@ code {
   display: flex;
   align-items: center;
 }
+
+.bg-theme-darkblue-5 {
+  background-color: hsl(214, 79%, 30%);
+}
+
+.bg-theme-darkblue-6 {
+  background-color: hsl(214, 79%, 23%);
+}
+
+.bg-theme-green-5 {
+  background-color: hsl(169, 80%, 52%);
+}
+
+.border-theme-green-5 {
+  border-color: hsl(169, 80%, 52%);
+}
+
+.bg-theme-green-4 {
+  background-color: hsl(169, 80%, 42%);
+  &__hover:hover,
+  &__hover:active,
+  &__hover:focus {
+    background-color: hsl(169, 80%, 42%);
+  }
+}
+
+.border-theme-green-4 {
+  border-color: hsl(169, 80%, 42%);
+  &__hover:hover,
+  &__hover:active,
+  &__hover:focus {
+    border-color: hsl(169, 80%, 42%);
+  }
+}
+
+.bottom-1 {
+  bottom: 0.5rem;
+}
+
+$something: hsl(214, 79%, 25%);

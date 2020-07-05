@@ -108,7 +108,7 @@ export default function () {
       <TitleDivider
         title={'COURSES BY TOPICS'}
         align="center"
-        classNames={{ middleSpan: 'text-base' }}
+        classNames={{ middleSpan: 'text-base text-white' }}
       />
       <Carousel
         className="custom-carousel mb-2 cursor-grab"

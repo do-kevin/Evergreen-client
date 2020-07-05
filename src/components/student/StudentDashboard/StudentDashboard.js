@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert } from 'antd';
+import { Alert, Col, Row } from 'antd';
 import useAxios, { configure } from 'axios-hooks';
 import {
   isEqual,
@@ -15,7 +15,6 @@ import {
 } from 'lodash';
 import axiosInstance from 'services/AxiosInstance';
 import useGlobalStore from 'store/GlobalStore';
-import { TitleDivider } from 'components/shared';
 import { InfoCard } from 'components/student';
 import UserPathwayContainer from 'components/student/user-pathway/UserPathwayContainer';
 import './student-dashboard.scss';
@@ -125,10 +124,17 @@ export default function (props) {
     getEnrollments(studentId);
   }, [studentPayload]);
 
-  let offerIds = filter(student.Enrollments || [], ['status', 'Activated']);
+  let offerIds = filter(student.Enrollments || [], ({ status }) => {
+    if (status === 'Activated') {
+      return true;
+    }
+    if (status === 'Completed') {
+      return true;
+    }
+    return false;
+  });
   offerIds = groupBy(offerIds, 'offer_id');
   offerIds = Object.keys(offerIds);
-
   if (student.StudentPathways) {
     for (let i = 0; i < student.StudentPathways.length; i++) {
       const newOfferIds = [];
@@ -153,11 +159,12 @@ export default function (props) {
 
   return (
     <main className="pb-4">
-      <TitleDivider
-        title={'Enrolled Curriculums'}
-        align="center"
-        classNames={{ middleSpan: 'text-base' }}
-      />
+      <span
+        className="block text-white text-4xl mt-3"
+        style={{ color: 'hsl(214, 80%, 28%)' }}
+      >
+        Enrolled Curriculums
+      </span>
       {(student &&
         student.StudentPathways &&
         student.StudentPathways.length &&
@@ -181,47 +188,52 @@ export default function (props) {
         <Alert
           className="mx-auto text-center rounded"
           type="info"
-          message="You haven't enrolled in any pathways yet."
+          message="You haven't enrolled in any curriculums yet."
         />
       )}
-      <TitleDivider
-        title={'Enrolled Courses'}
-        align="center"
-        classNames={{ middleSpan: 'text-base' }}
-      />
-      {(offerIds.length &&
-        offerIds.map((offerId, index) => {
-          offerId = Number(offerId);
-          const offer = offerStore.entities[offerId];
-          let p = null;
-          let latestEnrollment = null;
-          if (!offer) {
-            getOffer(offerId);
-          }
-          if (offer && offer.provider_id) {
-            p = offer.Provider;
-          }
-          if (offerId && myEnrollments[offerId]) {
-            latestEnrollment = last(myEnrollments[offerId]);
-          }
-          return offer && offer.id ? (
-            <InfoCard
-              className="mb-4"
-              data={offer}
-              provider={p}
-              key={uniqueId('card_')}
-              groupedDataFields={groupedDataFields}
-              latestEnrollment={latestEnrollment}
-              enableStatus={true}
-            />
-          ) : null;
-        })) || (
-        <Alert
-          className="mx-auto text-center rounded"
-          type="info"
-          message="You haven't enrolled in any courses yet."
-        />
-      )}
+      <span
+        className="block text-white text-4xl mt-3"
+        style={{ color: 'hsl(214, 80%, 28%)' }}
+      >
+        Enrolled Courses
+      </span>
+      <Row className="w-full flex-wrap" gutter={8}>
+        {(offerIds.length &&
+          offerIds.map((offerId, index) => {
+            offerId = Number(offerId);
+            const offer = offerStore.entities[offerId];
+            let p = null;
+            let latestEnrollment = null;
+            if (!offer) {
+              getOffer(offerId);
+            }
+            if (offer && offer.provider_id) {
+              p = offer.Provider;
+            }
+            if (offerId && myEnrollments[offerId]) {
+              latestEnrollment = last(myEnrollments[offerId]);
+            }
+            return offer && offer.id ? (
+              <Col xs={24} lg={12} key={uniqueId('card_')}>
+                <InfoCard
+                  className="mb-4 mx-auto"
+                  style={{ minWidth: '278px', maxWidth: 500 }}
+                  data={offer}
+                  provider={p}
+                  groupedDataFields={groupedDataFields}
+                  latestEnrollment={latestEnrollment}
+                  enableStatus={true}
+                />
+              </Col>
+            ) : null;
+          })) || (
+          <Alert
+            className="mx-auto text-center rounded"
+            type="info"
+            message="You haven't enrolled in any courses yet."
+          />
+        )}
+      </Row>
     </main>
   );
 }

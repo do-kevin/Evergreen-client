@@ -49,11 +49,11 @@ const statuses = {
 function InfoCardFooter(props) {
   const { enrollment = null } = props;
   let text = (
-    <p className="text-gray font-bold" style={{ minWidth: 68 }}>
+    <p className="text-gray-600 font-bold" style={{ minWidth: 68 }}>
       Unenrolled
     </p>
   );
-  let backgroundColor = 'rgba(255,255,0,0.2)';
+  let backgroundColor = 'rgb(255,255,0)';
 
   if (enrollment && enrollment.status) {
     text = (
@@ -63,7 +63,7 @@ function InfoCardFooter(props) {
             ? statuses[enrollment.status]
               ? statuses[enrollment.status].textColor
               : null
-            : 'text-gray'
+            : 'text-gray-600'
         } font-bold info-card__statusText`}
         style={{ minWidth: 68 }}
       >
@@ -76,7 +76,7 @@ function InfoCardFooter(props) {
     );
     backgroundColor = statuses[enrollment.status]
       ? statuses[enrollment.status].statusColor
-      : 'rgba(255,255,0,0.2)';
+      : 'rgb(255,255,0)';
   }
 
   return (

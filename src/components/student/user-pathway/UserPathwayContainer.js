@@ -88,12 +88,13 @@ export default function (props) {
         enrollmentsByOfferId={enrollmentsByOfferId}
         student={student}
       >
-        <section style={{ maxWidth: 896 }}>
+        <section className="mx-auto w-full">
           {(groupKeys && groupKeys.length && (
             <TitleDivider
+              className="mt-6"
               title={'GROUPS OF COURSES'}
               align="center"
-              classNames={{ middleSpan: 'text-base' }}
+              classNames={{ middleSpan: 'text-base text-white' }}
             />
           )) ||
             null}

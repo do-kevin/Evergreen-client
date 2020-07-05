@@ -1,15 +1,25 @@
-$width: 423px;
+$width: 1200px;
 $firstBreakPt: 769px;
+$themeColor: hsl(214, 79%, 15%);
 
 .homeScreen {
+  background-color: $themeColor;
   &__homeButton {
     @media only screen and (max-width: 320px) {
       display: none;
     }
   }
   &__contentWrapper {
+    max-width: $width;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: $themeColor;
     padding-bottom: 3rem;
     padding-top: 1rem;
+    @media only screen and (max-width: $width) {
+      padding-right: 1rem;
+      padding-left: 1rem;
+    }
     @media only screen and (min-width: $firstBreakPt) {
       padding-top: 3rem;
       padding-bottom: 1rem;
@@ -30,6 +40,7 @@ $firstBreakPt: 769px;
     }
   }
   &__carouselContent {
+    background-color: $themeColor;
     @media only screen and (min-width: $firstBreakPt) {
       max-width: 100%;
     }

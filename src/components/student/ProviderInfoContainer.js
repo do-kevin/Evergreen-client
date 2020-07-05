@@ -62,12 +62,12 @@ export default function (props) {
         groupedDataFields={groupedDataFields}
         type="provider"
       >
-        <section style={{ maxWidth: 896 }}>
+        <section style={{ maxWidth: 896 }} className="mx-auto">
           {Offers.length ? (
             <TitleDivider
-              title={'OFFERS'}
+              title={'COURSES'}
               align="center"
-              classNames={{ middleSpan: 'text-base' }}
+              classNames={{ middleSpan: 'text-base text-white' }}
             />
           ) : null}
           {(Offers.length &&
@@ -89,12 +89,12 @@ export default function (props) {
             })) ||
             null}
         </section>
-        <section style={{ maxWidth: 896 }}>
+        <section style={{ maxWidth: 896 }} className="mx-auto">
           {(Pathways.length && (
             <TitleDivider
               title={'PATHWAYS'}
               align="center"
-              classNames={{ middleSpan: 'text-base' }}
+              classNames={{ middleSpan: 'text-base text-white' }}
             />
           )) ||
             null}

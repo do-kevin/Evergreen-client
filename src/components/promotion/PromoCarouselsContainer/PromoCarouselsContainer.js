@@ -90,7 +90,7 @@ export default function () {
       <TitleDivider
         title={'LOCAL PROMOTIONS'}
         align="center"
-        classNames={{ middleSpan: 'text-base' }}
+        classNames={{ middleSpan: 'text-base text-white' }}
       />
       <Carousel
         className="custom-carousel promoCarousel mb-2 cursor-grab"

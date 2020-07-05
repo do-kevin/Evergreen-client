@@ -57,13 +57,13 @@ export default function (props) {
         session={session}
         groupedDataFields={groupedDataFields}
       >
-        <section style={{ maxWidth: 896 }}>
+        <section style={{ maxWidth: 896 }} className="mx-auto">
           {(offer && offer.RelatedOffers && offer.RelatedOffers.length && (
             <>
               <TitleDivider
                 title={'RELATED COURSES'}
                 align="center"
-                classNames={{ middleSpan: 'text-base' }}
+                classNames={{ middleSpan: 'text-base text-white' }}
               />
               <Carousel
                 className="custom-carousel mb-2 cursor-grab"
@@ -95,7 +95,7 @@ export default function (props) {
           )) ||
             null}
         </section>
-        <section style={{ maxWidth: 896 }}>
+        <section style={{ maxWidth: 896 }} className="mx-auto">
           {(offer &&
             offer.PrerequisiteOffers &&
             offer.PrerequisiteOffers.length && (
@@ -103,7 +103,7 @@ export default function (props) {
                 <TitleDivider
                   title={'PREREQUISITES'}
                   align="center"
-                  classNames={{ middleSpan: 'text-base' }}
+                  classNames={{ middleSpan: 'text-base text-white' }}
                 />
                 <Carousel
                   className="custom-carousel mb-4 cursor-grab"

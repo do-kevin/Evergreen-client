@@ -68,7 +68,7 @@ export default function (props) {
             <TitleDivider
               title={'GROUPS OF COURSES'}
               align="center"
-              classNames={{ middleSpan: 'text-base' }}
+              classNames={{ middleSpan: 'text-base text-white' }}
             />
           )) ||
             null}
