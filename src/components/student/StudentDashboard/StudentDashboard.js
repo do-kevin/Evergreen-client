@@ -214,7 +214,7 @@ export default function (props) {
               latestEnrollment = last(myEnrollments[offerId]);
             }
             return offer && offer.id ? (
-              <Col xs={24} lg={12} key={uniqueId('card_')}>
+              <Col xs={24} sm={12} lg={12} key={uniqueId('card_')}>
                 <InfoCard
                   className="mb-4 mx-auto"
                   style={{ minWidth: '278px', maxWidth: 500 }}

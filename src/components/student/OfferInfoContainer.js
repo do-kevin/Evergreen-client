@@ -57,7 +57,7 @@ export default function (props) {
         session={session}
         groupedDataFields={groupedDataFields}
       >
-        <section style={{ maxWidth: 896 }} className="mx-auto">
+        <section className="mx-auto w-full">
           {(offer && offer.RelatedOffers && offer.RelatedOffers.length && (
             <>
               <TitleDivider
@@ -83,6 +83,7 @@ export default function (props) {
                 {offer.RelatedOffers.map((o, index) => {
                   return (
                     <InfoCard
+                      className="mx-1"
                       key={uniqueId('related_card_')}
                       data={o}
                       provider={provider}
@@ -95,7 +96,7 @@ export default function (props) {
           )) ||
             null}
         </section>
-        <section style={{ maxWidth: 896 }} className="mx-auto">
+        <section className="mx-auto w-full">
           {(offer &&
             offer.PrerequisiteOffers &&
             offer.PrerequisiteOffers.length && (
@@ -125,6 +126,7 @@ export default function (props) {
                   {offer.PrerequisiteOffers.map((o, index) => {
                     return (
                       <InfoCard
+                        className="mx-1"
                         key={uniqueId('prereq_card_')}
                         data={o}
                         provider={provider}

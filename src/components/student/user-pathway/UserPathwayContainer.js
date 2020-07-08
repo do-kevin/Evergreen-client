@@ -5,6 +5,7 @@ import useGlobalStore from 'store/GlobalStore';
 import axiosInstance from 'services/AxiosInstance';
 import { TitleDivider } from 'components/shared';
 import { InfoCard } from 'components/student';
+import { Col, Row } from 'antd';
 import UserPathway from 'components/student/user-pathway/UserPathway/UserPathway';
 import 'assets/scss/responsive-carousel-override.scss';
 
@@ -141,52 +142,57 @@ export default function (props) {
                 <div key={uniqueId('div_')}>
                   <div className="mb-2">
                     <div className="flex flex-row mx-auto">
-                      <span className="px-2 font-bold bg-green-300">
+                      <span className="px-2 font-bold bg-green-300 rounded-l">
                         {groupName}
                       </span>
                       <span className="block capitalize px-2 bg-green-200">
                         {firstOfferPathway.semester}
                       </span>
                       {year ? (
-                        <span className="px-2 bg-gray-300">Year {year}</span>
+                        <span className="px-2 bg-gray-300 rounded-r">
+                          Year {year}
+                        </span>
                       ) : null}
                     </div>
                   </div>
-                  {group.map((g, idx) => {
-                    let latestEnrollment = null;
+                  <Row className="w-full flex-wrap" gutter={8}>
+                    {group.map((g, idx) => {
+                      let latestEnrollment = null;
 
-                    if (!g) {
-                      return null;
-                    }
+                      if (!g) {
+                        return null;
+                      }
 
-                    let p = null;
+                      let p = null;
 
-                    const offer = offerStore.entities[g.offer_id];
+                      const offer = offerStore.entities[g.offer_id];
 
-                    if (!offer) {
-                      getOffer(g.offer_id);
-                    }
+                      if (!offer) {
+                        getOffer(g.offer_id);
+                      }
 
-                    if (offer && offer.provider_id) {
-                      p = offer.Provider;
-                    }
+                      if (offer && offer.provider_id) {
+                        p = offer.Provider;
+                      }
 
-                    if (myEnrollments[g.offer_id]) {
-                      latestEnrollment = last(myEnrollments[g.offer_id]);
-                    }
+                      if (myEnrollments[g.offer_id]) {
+                        latestEnrollment = last(myEnrollments[g.offer_id]);
+                      }
 
-                    return (
-                      <InfoCard
-                        className="mb-4"
-                        data={offer}
-                        provider={p}
-                        key={uniqueId('card_')}
-                        groupedDataFields={groupedDataFields}
-                        latestEnrollment={latestEnrollment}
-                        enableStatus={true}
-                      />
-                    );
-                  })}
+                      return (
+                        <Col xs={24} sm={12} lg={12} key={uniqueId('card_')}>
+                          <InfoCard
+                            className="mb-4"
+                            data={offer}
+                            provider={p}
+                            groupedDataFields={groupedDataFields}
+                            latestEnrollment={latestEnrollment}
+                            enableStatus={true}
+                          />
+                        </Col>
+                      );
+                    })}
+                  </Row>
                 </div>
               );
             })) ||

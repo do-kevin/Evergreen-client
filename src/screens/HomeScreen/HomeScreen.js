@@ -14,12 +14,12 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSignInAlt,
-  faUser,
   faArrowLeft,
   faSearch,
   faTimes,
   faHome,
   faFilter,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons';
 import { TopicCarouselContainer } from 'components/student';
 import PromoCarouselsContainer from 'components/promotion/PromoCarouselsContainer/PromoCarouselsContainer';
@@ -477,7 +477,7 @@ function HomeScreen() {
                 shape="circle"
                 className="bg-theme-green-5 bg-theme-green-4__hover border-theme-green-5 border-theme-green-4__hover"
               >
-                <FontAwesomeIcon className="text-white" icon={faUser} />
+                <FontAwesomeIcon className="text-white" icon={faBars} />
               </Button>
             )) || (
               <Button
@@ -501,29 +501,27 @@ function HomeScreen() {
         visible={openDrawer}
         onClose={() => setOpenDrawer(false)}
       >
-        <div className="flex flex-col items-start">
-          <Link
-            to={`${match.url}/student`}
-            onClick={() =>
-              setToggeables({
-                ...toggeables,
-                search: false,
-                popover: false,
-              })
-            }
-          >
-            <Button
-              type="link"
-              className="py-0 px-0 pr-6 text-gray-500"
-              size="small"
+        <div className="flex flex-col items-start h-full justify-between">
+          <div className="mt-6 w-full">
+            <Link
+              className="block w-full text-center bg-theme-green-5 text-white p-3 rounded hover:text-gray-200 active:text-gray-200 shadow"
+              to={`${match.url}/student`}
+              onClick={() => {
+                setToggeables({
+                  ...toggeables,
+                  search: false,
+                  popover: false,
+                });
+                setOpenDrawer(false);
+              }}
             >
               My Enrollments
-            </Button>
-          </Link>
+            </Link>
+          </div>
           <Button
-            type="link"
-            className="py-0 px-0 pr-6 text-gray-500"
-            size="small"
+            type="dashed"
+            size="large"
+            className="text-gray-500 text-center w-full"
             onClick={() => AuthService.logout()}
           >
             Sign out

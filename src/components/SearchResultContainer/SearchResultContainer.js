@@ -26,7 +26,9 @@ export default function ({ data = [], toggeables, setToggeables }) {
 
   return (
     <div className="h-full">
-      {data && data.length && <p className="text-2xl text-center">Results</p>}
+      {data && data.length && (
+        <p className="text-2xl text-center text-white">Results</p>
+      )}
       {(data &&
         data.length &&
         groupKeys.map((key) => {
@@ -36,7 +38,7 @@ export default function ({ data = [], toggeables, setToggeables }) {
                 <TitleDivider
                   title={rename[key] + 's'}
                   align="center"
-                  classNames={{ middleSpan: 'text-base capitalize' }}
+                  classNames={{ middleSpan: 'text-base capitalize text-white' }}
                 />
               )) ||
                 null}

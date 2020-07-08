@@ -325,6 +325,15 @@ export default function ({
             </Col>
             <Col span={8} className="flex justify-center">
               <div>
+                <span className="font-bold text-gray-600 text-base">Pay</span>
+                <br />
+                <span className="font-bold text-black text-2xl relative bottom-1">
+                  {totalPay > 0 ? `$${totalPay}` : '---'}
+                </span>
+              </div>
+            </Col>
+            <Col span={8} className="flex flex-row-reverse">
+              <div>
                 <span className="font-bold text-gray-600 text-base">
                   Credit
                 </span>
@@ -332,15 +341,6 @@ export default function ({
                 <span className="font-bold text-black text-2xl relative bottom-1">
                   {totalCredit > 0 ? `${creditEarned}` : '---'}/
                   {totalCredit > 0 ? `${totalCredit}` : '---'}
-                </span>
-              </div>
-            </Col>
-            <Col span={8} className="flex flex-row-reverse">
-              <div>
-                <span className="font-bold text-gray-600 text-base">Pay</span>
-                <br />
-                <span className="font-bold text-black text-2xl relative bottom-1">
-                  {totalPay > 0 ? `$${totalPay}` : '---'}
                 </span>
               </div>
             </Col>

@@ -5,6 +5,7 @@ import axiosInstance from 'services/AxiosInstance';
 import { TitleDivider } from 'components/shared';
 import { InfoCard, InfoLayout } from 'components/student';
 import 'assets/scss/responsive-carousel-override.scss';
+import { Row, Col } from 'antd';
 
 export default function (props) {
   const {
@@ -63,7 +64,7 @@ export default function (props) {
         type="pathway"
         session={session}
       >
-        <section style={{ maxWidth: 896 }}>
+        <section className="mx-auto w-full">
           {(groupKeys.length && (
             <TitleDivider
               title={'GROUPS OF COURSES'}
@@ -85,28 +86,31 @@ export default function (props) {
                         'text-base bg-teal-600 px-2 rounded text-white',
                     }}
                   />
-                  {group.map((g) => {
-                    if (!g) {
-                      return null;
-                    }
-                    let p = null;
-                    const offer = offerStore.entities[g.offer_id];
-                    if (!offer) {
-                      getOffer(g.offer_id);
-                    }
-                    if (offer && offer.provider_id) {
-                      p = offer.Provider;
-                    }
-                    return (
-                      <InfoCard
-                        key={uniqueId('card_')}
-                        className="mb-4"
-                        data={offer}
-                        provider={p}
-                        groupedDataFields={groupedDataFields}
-                      />
-                    );
-                  })}
+                  <Row gutter={8}>
+                    {group.map((g) => {
+                      if (!g) {
+                        return null;
+                      }
+                      let p = null;
+                      const offer = offerStore.entities[g.offer_id];
+                      if (!offer) {
+                        getOffer(g.offer_id);
+                      }
+                      if (offer && offer.provider_id) {
+                        p = offer.Provider;
+                      }
+                      return (
+                        <Col key={uniqueId('card_')} xs={24} sm={12}>
+                          <InfoCard
+                            className="mb-4"
+                            data={offer}
+                            provider={p}
+                            groupedDataFields={groupedDataFields}
+                          />
+                        </Col>
+                      );
+                    })}
+                  </Row>
                 </div>
               );
             })) ||
