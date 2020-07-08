@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Card, Button } from 'antd';
 import { compact, groupBy, property } from 'lodash';
 import useGlobalStore from 'store/GlobalStore';
@@ -93,15 +92,13 @@ export default function () {
       }
 
       return (
-        <Link to={`/home/offer/${offer.id}`} key={index}>
-          <InfoCard
-            key={index}
-            className="mx-auto mb-4 w-full"
-            data={offer}
-            provider={p}
-            groupedDataFields={groupedDataFields}
-          />
-        </Link>
+        <InfoCard
+          key={index}
+          className="mx-auto mb-4 w-full"
+          data={offer}
+          provider={p}
+          groupedDataFields={groupedDataFields}
+        />
       );
     });
   };
@@ -109,9 +106,9 @@ export default function () {
   return (
     <div className="h-auto w-full">
       <TitleDivider
-        title={'OFFERS BY TOPICS'}
+        title={'COURSES BY TOPICS'}
         align="center"
-        classNames={{ middleSpan: 'text-base' }}
+        classNames={{ middleSpan: 'text-base text-white' }}
       />
       <Carousel
         className="custom-carousel mb-2 cursor-grab"
@@ -137,9 +134,8 @@ export default function () {
         {topics.map((topic, index) => {
           return (
             <Card
-              className="mx-auto text-white text-lg w-auto flex justify-center items-center"
+              className="text-white text-lg w-auto flex justify-center items-center bg-theme-green-5 border-theme-green-5 mx-2"
               style={{
-                backgroundColor: 'rgb(7, 25, 80)',
                 height: 50,
               }}
               key={index}

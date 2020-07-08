@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChalkboardTeacher,
   faUserGraduate,
+  faUsersCog,
 } from '@fortawesome/free-solid-svg-icons';
 import { get } from 'lodash';
 
@@ -11,7 +12,7 @@ import AuthService from 'services/AuthService';
 import axiosInstance from 'services/AxiosInstance';
 import './role-selection-screen.scss';
 
-import { Layout, Row, Col, Card, Button } from 'antd';
+import { Layout, Row, Col, Card, Button, Alert } from 'antd';
 const { Content } = Layout;
 
 function RoleSelectionScreen(props) {
@@ -22,6 +23,24 @@ function RoleSelectionScreen(props) {
   if (!user_id) {
     return <Redirect to={{ pathname: '/' }} />;
   }
+
+  const roles = [
+    {
+      name: 'Administrator',
+      type: 'admin',
+      icon: faUsersCog,
+    },
+    {
+      name: 'Provider',
+      type: 'provider',
+      icon: faChalkboardTeacher,
+    },
+    {
+      name: 'Student',
+      type: 'student',
+      icon: faUserGraduate,
+    },
+  ];
 
   const createUserProfile = async (role) => {
     try {
@@ -60,65 +79,51 @@ function RoleSelectionScreen(props) {
   }
 
   return (
-    <Layout className="h-full bg-green-500">
-      <div className="w-full bg-green-500">
-        <Content className="mx-auto max-w-4xl h-full bg-green-500 flex items-center flex-col justify-center selection">
-          <h2 className="text-2xl mt-12 mb-6 question font-medium">
-            Are you are a . . .
+    <Layout className="h-full bg-gray-300">
+      <div className="w-full bg-gray-300">
+        <Content className="mx-auto max-w-6xl h-full bg-gray-300 flex items-center flex-col justify-center selection">
+          <h2 className="text-4xl mt-12 mb-6 question font-medium font-bold uppercase">
+            Select Your User Type
           </h2>
-          <Row className="w-full justify-around user-selection-row">
-            <Col className="flex justify-center">
-              <Button
-                className="h-full"
-                type="link"
-                onClick={() => createUserProfile('student')}
-              >
-                <Card
-                  className="w-72 h-88 rounded user-card flex justify-center flex-col border-none"
-                  cover={
-                    <FontAwesomeIcon
-                      className="mx-auto bordered text-blue-600 user-card__icon"
-                      style={{ fontSize: '8rem', color: 'rgb(57, 107, 86)' }}
-                      icon={faUserGraduate}
-                    />
-                  }
-                >
-                  <span
-                    className="text-xl"
-                    style={{ color: 'rgb(57, 107, 86)' }}
+          <Row className="w-full justify-around user-selection-row" gutter={8}>
+            {roles.map(({ name, type, icon }) => {
+              return (
+                <Col className="flex justify-center">
+                  <Button
+                    className="h-full"
+                    type="link"
+                    onClick={() => createUserProfile(type)}
                   >
-                    Student
-                  </span>
-                </Card>
-              </Button>
-            </Col>
-            <span className="my-auto text-center text-2xl">OR</span>
-            <Col className="flex justify-center">
-              <Button
-                className="h-full"
-                type="link"
-                onClick={() => createUserProfile('provider')}
-              >
-                <Card
-                  className="w-72 h-88 rounded user-card flex justify-center flex-col border-none"
-                  cover={
-                    <FontAwesomeIcon
-                      className="mx-auto bordered user-card__icon"
-                      style={{ fontSize: '8rem', color: 'rgb(57, 107, 86)' }}
-                      icon={faChalkboardTeacher}
-                    />
-                  }
-                >
-                  <span
-                    className="text-xl"
-                    style={{ color: 'rgb(57, 107, 86)' }}
-                  >
-                    Provider
-                  </span>
-                </Card>
-              </Button>
-            </Col>
+                    <Card
+                      className="w-72 h-88 rounded user-card flex justify-center flex-col border-none"
+                      cover={
+                        <FontAwesomeIcon
+                          className="mx-auto bordered text-blue-600 user-card__icon"
+                          style={{
+                            fontSize: '8rem',
+                            color: 'rgba(0, 0, 0, 0.85)',
+                          }}
+                          icon={icon}
+                        />
+                      }
+                    >
+                      <span
+                        className="text-xl"
+                        style={{ color: 'rgb(57, 107, 86)' }}
+                      >
+                        {name}
+                      </span>
+                    </Card>
+                  </Button>
+                </Col>
+              );
+            })}
           </Row>
+          <Alert
+            className="text-center rounded mt-4 mx-4"
+            type="warning"
+            message="Administrator selection is currently available for demonstrative purposes."
+          />
         </Content>
       </div>
     </Layout>

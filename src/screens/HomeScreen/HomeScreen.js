@@ -9,16 +9,17 @@ import {
   Checkbox,
   Select,
   Switch,
+  Drawer,
 } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSignInAlt,
-  faUser,
   faArrowLeft,
   faSearch,
   faTimes,
   faHome,
   faFilter,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons';
 import { TopicCarouselContainer } from 'components/student';
 import PromoCarouselsContainer from 'components/promotion/PromoCarouselsContainer/PromoCarouselsContainer';
@@ -69,6 +70,7 @@ const SearchResultContainer = imported(() =>
 
 function HomeScreen() {
   const [searchString, setSearchString] = useState('');
+  const [openDrawer, setOpenDrawer] = useState(false);
   const [filters, setFilters] = useState({
     offer: true,
     pathway: true,
@@ -87,13 +89,6 @@ function HomeScreen() {
     popover: false,
   });
   const [results, setResults] = useState([]);
-
-  const handleVisibleChange = (visible) => {
-    setToggeables({
-      ...toggeables,
-      popover: visible,
-    });
-  };
 
   let match = useRouteMatch();
   const history = useHistory();
@@ -237,12 +232,12 @@ function HomeScreen() {
     }
   }, [getPathways, getOffers, getProviders]);
 
-  const { search, popover } = toggeables;
+  const { search } = toggeables;
 
   return (
-    <Layout className="homeScreen h-full bg-gray-100">
-      <div className="homeScreen__contentWrapper w-full bg-gray-100 pb-6">
-        <Content className="homeScreen__carouselContent mx-auto h-auto bg-gray-100">
+    <Layout className="homeScreen h-full">
+      <div className="homeScreen__contentWrapper w-full pb-6">
+        <Content className="homeScreen__carouselContent mx-auto h-auto">
           {(!search && (
             <>
               <Route exact path={`${match.url}`}>
@@ -297,13 +292,12 @@ function HomeScreen() {
           )}
         </Content>
       </div>
-      <Header className="homeScreen__navWrapper h-12 w-full bg-green-500 fixed bottom-0 z-10">
+      <Header className="homeScreen__navWrapper h-12 w-full bg-theme-darkblue-5 fixed bottom-0 z-50 text-white">
         <Row className="homeScreen__navbar mx-auto h-full">
           <Col span={!search ? 8 : 3} className="flex items-center">
             <div className="inherit">
               <Button
-                className="mr-2"
-                type="primary"
+                className="mr-2 bg-theme-green-5 bg-theme-green-4__hover border-theme-green-5 border-theme-green-4__hover"
                 shape="circle"
                 onClick={() => {
                   history.goBack();
@@ -317,8 +311,7 @@ function HomeScreen() {
                 <FontAwesomeIcon className="text-white" icon={faArrowLeft} />
               </Button>
               <Button
-                className="homeScreen__homeButton mr-2 p-0 z-10"
-                type="primary"
+                className="homeScreen__homeButton mr-2 p-0 z-10 bg-theme-green-5 bg-theme-green-4__hover border-theme-green-5 border-theme-green-4__hover"
                 shape="circle"
               >
                 <Link
@@ -406,7 +399,7 @@ function HomeScreen() {
                               </Col>
                             </Row>
                             <Row className="justify-between mb-1" gutter={6}>
-                              <Col>Offers</Col>
+                              <Col>Courses</Col>
                               <Col>
                                 <Switch
                                   size="small"
@@ -416,7 +409,7 @@ function HomeScreen() {
                               </Col>
                             </Row>
                             <Row className="justify-between" gutter={6}>
-                              <Col>Pathways</Col>
+                              <Col>Curriculums</Col>
                               <Col>
                                 <Switch
                                   size="small"
@@ -449,8 +442,8 @@ function HomeScreen() {
               <>
                 <Button
                   className="mr-2"
-                  danger
                   type="primary"
+                  danger
                   shape="circle"
                   onClick={() =>
                     setToggeables({
@@ -466,8 +459,7 @@ function HomeScreen() {
             )}
             {!search && (
               <Button
-                className="mr-2"
-                type="primary"
+                className="mr-2 bg-theme-green-5 bg-theme-green-4__hover border-theme-green-5 border-theme-green-4__hover"
                 shape="circle"
                 onClick={() =>
                   setToggeables({
@@ -480,52 +472,16 @@ function HomeScreen() {
               </Button>
             )}
             {(session && session.role === 'student' && (
-              <div>
-                <Popover
-                  trigger="click"
-                  placement="topRight"
-                  visible={popover}
-                  onVisibleChange={handleVisibleChange}
-                  content={
-                    <div className="flex flex-col items-start">
-                      <Link
-                        to={`${match.url}/student`}
-                        style={{ borderBottom: '1px solid #edf2f7' }}
-                        onClick={() =>
-                          setToggeables({
-                            ...toggeables,
-                            search: false,
-                            popover: false,
-                          })
-                        }
-                      >
-                        <Button
-                          type="link"
-                          className="py-0 px-0 pr-6 text-gray-500"
-                          size="small"
-                        >
-                          User Pathway
-                        </Button>
-                      </Link>
-                      <Button
-                        type="link"
-                        className="py-0 px-0 pr-6 text-gray-500"
-                        size="small"
-                        onClick={() => AuthService.logout()}
-                      >
-                        Sign out
-                      </Button>
-                    </div>
-                  }
-                >
-                  <Button type="primary" shape="circle">
-                    <FontAwesomeIcon className="text-white" icon={faUser} />
-                  </Button>
-                </Popover>
-              </div>
+              <Button
+                onClick={() => setOpenDrawer(true)}
+                shape="circle"
+                className="bg-theme-green-5 bg-theme-green-4__hover border-theme-green-5 border-theme-green-4__hover"
+              >
+                <FontAwesomeIcon className="text-white" icon={faBars} />
+              </Button>
             )) || (
               <Button
-                type="primary"
+                className="bg-theme-green-5 bg-theme-green-4__hover border-theme-green-5 border-theme-green-4__hover"
                 shape="circle"
                 onClick={() => {
                   window.location.replace(
@@ -539,6 +495,39 @@ function HomeScreen() {
           </Col>
         </Row>
       </Header>
+      <Drawer
+        placement="right"
+        closable={true}
+        visible={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+      >
+        <div className="flex flex-col items-start h-full justify-between">
+          <div className="mt-6 w-full">
+            <Link
+              className="block w-full text-center bg-theme-green-5 text-white p-3 rounded hover:text-gray-200 active:text-gray-200 shadow"
+              to={`${match.url}/student`}
+              onClick={() => {
+                setToggeables({
+                  ...toggeables,
+                  search: false,
+                  popover: false,
+                });
+                setOpenDrawer(false);
+              }}
+            >
+              My Enrollments
+            </Link>
+          </div>
+          <Button
+            type="dashed"
+            size="large"
+            className="text-gray-500 text-center w-full"
+            onClick={() => AuthService.logout()}
+          >
+            Sign out
+          </Button>
+        </div>
+      </Drawer>
     </Layout>
   );
 }

@@ -177,7 +177,7 @@ export default function EnrollmentTable({
       >
         <Column
           className="antd-col"
-          title="Offer Name"
+          title="Course Name"
           dataIndex="Offer"
           key="index"
           render={(offer) => {
@@ -188,7 +188,7 @@ export default function EnrollmentTable({
             return {
               children,
               props: {
-                'data-title': 'Offer Name',
+                'data-title': 'Course Name',
               },
             };
           }}
@@ -397,7 +397,7 @@ export default function EnrollmentTable({
                   title={() => (
                     <p style={{ maxWidth: '15em' }}>
                       Do you want to approve this student’s enrollment in this
-                      offer?
+                      course?
                     </p>
                   )}
                   onConfirm={() => setStatusToApprove(enrollment)}

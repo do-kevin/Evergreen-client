@@ -230,7 +230,7 @@ export default function OfferUpdateModal({
       destroyOnClose={true}
       forceRender={true}
       className="custom-modal"
-      title={'Update Offer'}
+      title={'Update Course'}
       visible={visible}
       width={998}
       bodyStyle={{ backgroundColor: '#f0f2f5', padding: 0 }}

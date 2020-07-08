@@ -10,6 +10,12 @@ import {
 import { groupBy } from 'lodash';
 import { LearnAndEarnIcons, TitleDivider } from 'components/shared';
 
+const rename = {
+  offer: 'Course',
+  pathway: 'Curriculum',
+  provider: 'Provider',
+};
+
 export default function ({ data = [], toggeables, setToggeables }) {
   const group = groupBy(data, 'entity_type');
   const groupKeys = Object.keys(group);
@@ -20,7 +26,9 @@ export default function ({ data = [], toggeables, setToggeables }) {
 
   return (
     <div className="h-full">
-      {data && data.length && <p className="text-2xl text-center">Results</p>}
+      {data && data.length && (
+        <p className="text-2xl text-center text-white">Results</p>
+      )}
       {(data &&
         data.length &&
         groupKeys.map((key) => {
@@ -28,9 +36,9 @@ export default function ({ data = [], toggeables, setToggeables }) {
             <div key={key}>
               {(group[key] && group[key].length && (
                 <TitleDivider
-                  title={key + 's'}
+                  title={rename[key] + 's'}
                   align="center"
-                  classNames={{ middleSpan: 'text-base capitalize' }}
+                  classNames={{ middleSpan: 'text-base capitalize text-white' }}
                 />
               )) ||
                 null}

@@ -151,7 +151,7 @@ export default function OfferForm({
       </Col>
       <Row className="items-center mb-0">
         <span className="text-gray-700 relative" style={{ bottom: 2 }}>
-          Related Offers
+          Related Courses
         </span>
         <Form.Item name="related_offers" className="w-full">
           <Select

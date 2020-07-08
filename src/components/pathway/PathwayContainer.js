@@ -116,7 +116,7 @@ export default function PathwayContainer({
     <Layout className="bg-transparent">
       <ProviderLogOutTopbar role={role} onClick={openProviderUpdateModal}>
         <Col span={14}>
-          <SearchHeader title="PATHWAYS" onSearch={handleDataSearch}>
+          <SearchHeader title="CURRICULUMS" onSearch={handleDataSearch}>
             <FaPlusCircleButton
               onMouseEnter={() => {
                 FormModal.preload();
@@ -125,7 +125,7 @@ export default function PathwayContainer({
               onClick={() =>
                 setModalStates({ ...modalStates, pathwayCreation: true })
               }
-              text="PATHWAY"
+              text="CURRICULUM"
             />
           </SearchHeader>
         </Col>
@@ -140,7 +140,7 @@ export default function PathwayContainer({
             offers={offerStore.entities}
           />
           <FormModal
-            title="New Pathway"
+            title="New Curriculum"
             visible={modalStates.pathwayCreation}
             FormComponent={PathwayCreationContainer}
             role={role}

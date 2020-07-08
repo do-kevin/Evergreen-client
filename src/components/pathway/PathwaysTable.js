@@ -70,7 +70,7 @@ function PathwaysTable(props) {
       />
       <Column
         className="antd-col"
-        title="Offer Groups"
+        title="Course Groups"
         dataIndex="GroupsOfOffers"
         key="index"
         render={(groups, record) => {
@@ -100,7 +100,7 @@ function PathwaysTable(props) {
           return {
             children,
             props: {
-              'data-title': 'Offer Groups',
+              'data-title': 'Course Groups',
             },
           };
         }}

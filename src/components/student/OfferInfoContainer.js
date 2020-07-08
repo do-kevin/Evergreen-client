@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { last, groupBy, property, uniqueId } from 'lodash';
 import useGlobalStore from 'store/GlobalStore';
 import axiosInstance from 'services/AxiosInstance';
@@ -57,13 +57,13 @@ export default function (props) {
         session={session}
         groupedDataFields={groupedDataFields}
       >
-        <section style={{ maxWidth: 896 }}>
+        <section className="mx-auto w-full">
           {(offer && offer.RelatedOffers && offer.RelatedOffers.length && (
             <>
               <TitleDivider
-                title={'RELATED OFFERS'}
+                title={'RELATED COURSES'}
                 align="center"
-                classNames={{ middleSpan: 'text-base' }}
+                classNames={{ middleSpan: 'text-base text-white' }}
               />
               <Carousel
                 className="custom-carousel mb-2 cursor-grab"
@@ -82,16 +82,13 @@ export default function (props) {
               >
                 {offer.RelatedOffers.map((o, index) => {
                   return (
-                    <Link
+                    <InfoCard
+                      className="mx-1"
                       key={uniqueId('related_card_')}
-                      to={o && o.id ? `/home/offer/${o.id}` : null}
-                    >
-                      <InfoCard
-                        data={o}
-                        provider={provider}
-                        groupedDataFields={groupedDataFields}
-                      />
-                    </Link>
+                      data={o}
+                      provider={provider}
+                      groupedDataFields={groupedDataFields}
+                    />
                   );
                 })}
               </Carousel>
@@ -99,7 +96,7 @@ export default function (props) {
           )) ||
             null}
         </section>
-        <section style={{ maxWidth: 896 }}>
+        <section className="mx-auto w-full">
           {(offer &&
             offer.PrerequisiteOffers &&
             offer.PrerequisiteOffers.length && (
@@ -107,7 +104,7 @@ export default function (props) {
                 <TitleDivider
                   title={'PREREQUISITES'}
                   align="center"
-                  classNames={{ middleSpan: 'text-base' }}
+                  classNames={{ middleSpan: 'text-base text-white' }}
                 />
                 <Carousel
                   className="custom-carousel mb-4 cursor-grab"
@@ -128,16 +125,13 @@ export default function (props) {
                 >
                   {offer.PrerequisiteOffers.map((o, index) => {
                     return (
-                      <Link
+                      <InfoCard
+                        className="mx-1"
                         key={uniqueId('prereq_card_')}
-                        to={o && o.id ? `/home/offer/${o.id}` : null}
-                      >
-                        <InfoCard
-                          data={o}
-                          provider={provider}
-                          groupedDataFields={groupedDataFields}
-                        />
-                      </Link>
+                        data={o}
+                        provider={provider}
+                        groupedDataFields={groupedDataFields}
+                      />
                     );
                   })}
                 </Carousel>
