@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useGlobalStore from 'store/GlobalStore';
 import { Carousel } from 'react-responsive-carousel';
-import { TitleDivider } from 'components/shared';
 import PromoCard from 'components/promotion/PromoCard/PromoCard';
 import 'assets/scss/responsive-carousel-override.scss';
 import './promo-carousels-container.scss';
@@ -87,13 +86,8 @@ export default function () {
           return <PromoCard key={index} data={promo} banner={true} />;
         })}
       </Carousel>
-      <TitleDivider
-        title={'LOCAL PROMOS'}
-        align="center"
-        classNames={{ middleSpan: 'text-base' }}
-      />
       <Carousel
-        className="custom-carousel promoCarousel mb-2 cursor-grab"
+        className="custom-carousel promoCarousel mb-2 mt-5 cursor-grab"
         centerMode
         infiniteLoop
         centerSlidePercentage={localSliderPercentage}

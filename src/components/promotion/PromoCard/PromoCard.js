@@ -15,6 +15,12 @@ export default function ({
 }) {
   let files = [];
 
+  const renameEntities = {
+    offer: 'course',
+    pathway: 'curriculum',
+    provider: 'provider',
+  };
+
   if (banner) {
     files = filter(data.Files, ['meta', 'banner-image']);
   } else {
@@ -62,7 +68,7 @@ export default function ({
       >
         {data.entity_type && (
           <span className="block font-normal absolute promoCard__entityType py-1 px-3 bg-black text-white bg-opacity-50 capitalize">
-            {data.entity_type}
+            {renameEntities[data.entity_type]}
           </span>
         )}
         <span className="block promoCard__link text-base">{data.name}</span>

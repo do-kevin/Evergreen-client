@@ -21,10 +21,6 @@ $dark: rgb(8, 106, 114);
   border-radius: 0;
   width: 100%;
   color: $tertiary;
-  &:hover,
-  &:active {
-    background: hsla(0, 0%, 50%, 0.059);
-  }
   .ant-card-head-title {
     text-align: center;
     padding: 0 8px;

@@ -1,11 +1,15 @@
 @import '~antd/dist/antd.min.css';
 @import '~react-responsive-carousel/lib/styles/carousel.min.css';
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+// Conflicts with antd css
+// @tailwind base;
+
+$themeColor: rgb(8, 34, 68);
+
 html {
-  background-color: rgba(247, 250, 252, 1);
+  background-color: rgb(8, 34, 68);
 }
 
 body {
@@ -84,3 +88,57 @@ code {
   display: flex;
   align-items: center;
 }
+
+.bg-theme-darkblue-5 {
+  background-color: rgb(16, 68, 137);
+}
+
+.bg-theme-darkblue-6 {
+  background-color: rgb(12, 52, 105);
+}
+
+.text-theme-darkblue-5 {
+  color: rgb(16, 68, 137);
+}
+
+.bg-theme-green-5 {
+  background-color: rgb(35, 231, 195);
+  &__hover:hover,
+  &__hover:active,
+  &__hover:focus {
+    background-color: rgb(35, 231, 195);
+  }
+}
+
+.border-theme-green-5 {
+  border-color: rgb(35, 231, 195);
+  &__hover:hover,
+  &__hover:active,
+  &__hover:focus {
+    background-color: rgb(35, 231, 195);
+  }
+}
+
+.bg-theme-green-4 {
+  background-color: rgb(21, 193, 161);
+  &__hover:hover,
+  &__hover:active,
+  &__hover:focus {
+    background-color: rgb(21, 193, 161);
+  }
+}
+
+.border-theme-green-4 {
+  border-color: rgb(21, 193, 161);
+  &__hover:hover,
+  &__hover:active,
+  &__hover:focus {
+    border-color: rgb(21, 193, 161);
+  }
+}
+
+.bottom-1 {
+  bottom: 0.5rem;
+}
+
+$something: rgb(13, 57, 114);

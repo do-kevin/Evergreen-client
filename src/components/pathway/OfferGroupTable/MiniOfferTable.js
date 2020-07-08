@@ -29,7 +29,7 @@ class MiniOfferTable extends PureComponent {
           })}
         />
         <Column
-          title="Offer"
+          title="Course"
           dataIndex="offer_id"
           key="offer_id"
           render={(offerId, record, index) => {

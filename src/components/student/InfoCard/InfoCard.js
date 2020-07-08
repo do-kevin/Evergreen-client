@@ -36,7 +36,7 @@ const statuses = {
   },
   Unenrolled: {
     substituteStatus: 'Unenrolled',
-    statusColor: 'rgba(255,255,0,0.2)',
+    statusColor: 'rgb(211,211,211)',
     textColor: 'text-gray',
   },
   Failed: {
@@ -49,11 +49,11 @@ const statuses = {
 function InfoCardFooter(props) {
   const { enrollment = null } = props;
   let text = (
-    <p className="text-gray font-bold" style={{ minWidth: 68 }}>
+    <p className="text-gray-600 font-bold" style={{ minWidth: 68 }}>
       Unenrolled
     </p>
   );
-  let backgroundColor = 'rgba(255,255,0,0.2)';
+  let backgroundColor = 'rgb(211,211,211)';
 
   if (enrollment && enrollment.status) {
     text = (
@@ -63,7 +63,7 @@ function InfoCardFooter(props) {
             ? statuses[enrollment.status]
               ? statuses[enrollment.status].textColor
               : null
-            : 'text-gray'
+            : 'text-gray-600'
         } font-bold info-card__statusText`}
         style={{ minWidth: 68 }}
       >
@@ -76,7 +76,7 @@ function InfoCardFooter(props) {
     );
     backgroundColor = statuses[enrollment.status]
       ? statuses[enrollment.status].statusColor
-      : 'rgba(255,255,0,0.2)';
+      : 'rgb(211,211,211)';
   }
 
   return (
@@ -85,6 +85,8 @@ function InfoCardFooter(props) {
       style={{
         width: 31,
         background: backgroundColor,
+        borderTopRightRadius: '1rem',
+        borderBottomRightRadius: '1rem',
       }}
     >
       <aside
@@ -92,6 +94,7 @@ function InfoCardFooter(props) {
         style={{
           bottom: '1.5em',
           transform: 'rotate(90deg)',
+          right: '0.4em',
         }}
       >
         {text}
@@ -141,21 +144,26 @@ export default function ({
 
   return (
     <div className={`flex flex-row shadow ${className}`}>
-      <Card className={`info-card`} style={style}>
+      <Card
+        className={`info-card`}
+        style={{
+          ...style,
+          borderTopRightRadius: !enableStatus ? '1rem' : 'none',
+          borderBottomRightRadius: !enableStatus ? '1rem' : 'none',
+          borderTopLeftRadius: '1rem',
+          borderBottomLeftRadius: '1rem',
+        }}
+      >
         <Row>
           <Col span={12}>
             <Row className="mb-1 flex-col">
-              {external_url ? (
-                <a
+              {data && data.id ? (
+                <Link
                   className="text-left font-bold"
-                  onClick={(e) => e.stopPropagation()}
-                  style={{ zIndex: 33 }}
-                  href={external_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  to={`/home/offer/${data.id}`}
                 >
                   {name}
-                </a>
+                </Link>
               ) : (
                 <span className="text-left font-bold">{name}</span>
               )}
@@ -172,15 +180,25 @@ export default function ({
             <Row className="my-1">
               <LearnAndEarnIcons learnAndEarn={learn_and_earn} />
             </Row>
-            <Row className="my-1">
-              <div>
-                <FontAwesomeIcon icon={faMapMarkerAlt} />{' '}
-                {provider && provider.location ? provider.location : '-'}
-              </div>
-            </Row>
-            <Row className="mt-1">
+          </Col>
+          <Col span={12} className="text-right">
+            <a
+              className="text-center bg-blue-500 hover:bg-blue-700 hover:text-white text-white py-1 px-3 text-xs rounded w-auto"
+              onClick={(e) => e.stopPropagation()}
+              style={{ zIndex: 33 }}
+              href={external_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Website
+            </a>
+            <div className="mt-1">
+              <FontAwesomeIcon icon={faMapMarkerAlt} />{' '}
+              {provider && provider.location ? provider.location : '-'}
+            </div>
+            <Row className="mt-1 flex-row-reverse">
               {length && (
-                <div className="unit-tag mr-2 text-white rounded px-1">
+                <div className="unit-tag ml-2 text-white rounded px-1">
                   {Number(length) || null} {lengthUnit ? lengthUnit.name : null}
                 </div>
               )}
@@ -192,12 +210,27 @@ export default function ({
               )}
             </Row>
           </Col>
-          <Col span={12} className="text-right">
-            <ol>
-              <li>Cost : {`$${Number(cost) || '---'}`}</li>
-              <li>Pay : {`$${Number(pay) || '---'}`}</li>
-              <li>Credit : {`${Number(credit) || '---'}`}</li>
-            </ol>
+        </Row>
+        <Row className="w-full">
+          <Col span={8} className="text-left">
+            <span className="block font-bold text-gray-600 text-sm">Cost</span>
+            <span className="font-bold text-black text-xl bottom-1 relative">{`$${
+              Number(cost) || '---'
+            }`}</span>
+          </Col>
+          <Col span={8} className="text-center">
+            <span className="block font-bold text-gray-600 text-sm">Pay</span>
+            <span className="font-bold text-black text-xl bottom-1 relative">{`$${
+              Number(pay) || '---'
+            }`}</span>
+          </Col>
+          <Col span={8} className="text-right">
+            <span className="block font-bold text-gray-600 text-sm">
+              Credit
+            </span>
+            <span className="font-bold text-black text-xl bottom-1 relative">{`${
+              Number(credit) || '---'
+            }`}</span>
           </Col>
         </Row>
       </Card>

@@ -8,6 +8,11 @@ import useGlobalStore from 'store/GlobalStore';
 import './promote-card.scss';
 
 export default function ({ data = {}, session }) {
+  const renameEntities = {
+    provider: 'provider',
+    offer: 'course',
+    pathway: 'curriculum',
+  };
   const { provider, offer, pathway } = useGlobalStore();
   const adminId = session.id;
 
@@ -198,7 +203,7 @@ export default function ({ data = {}, session }) {
           borderTopLeftRadius: '0.20rem',
         }}
       >
-        {data && data.entity_type ? data.entity_type : ''}
+        {data && data.entity_type ? renameEntities[data.entity_type] : ''}
       </header>
       <figure className="block bg-gray-200">
         {(data && data.Files && data.Files.length && (

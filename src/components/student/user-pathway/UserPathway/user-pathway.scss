@@ -18,3 +18,19 @@
     border: none;
   }
 }
+
+$breakPoint: 768px;
+
+.infoRow {
+  @media only screen and (max-width: $breakPoint) {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  &__col {
+    width: 49.5%;
+    @media only screen and (max-width: $breakPoint) {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+}

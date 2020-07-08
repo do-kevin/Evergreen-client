@@ -57,7 +57,7 @@ class GroupTable extends Component {
       >
         <Column
           className="antd-col"
-          title="Offer Group"
+          title="Course Group"
           dataIndex="group_name"
           key="group_name"
           render={(groupNameText, { offers }, index) => {
@@ -141,7 +141,7 @@ class GroupTable extends Component {
         />
         <Column
           className="antd-col"
-          title="Offers"
+          title="Courses"
           dataIndex="inputName"
           key="inputName"
           render={(inputName, record) => {
@@ -169,7 +169,7 @@ class GroupTable extends Component {
                 </Form.Item>
               ),
               props: {
-                'data-title': 'Offers',
+                'data-title': 'Courses',
               },
             };
           }}
