@@ -159,10 +159,7 @@ export default function (props) {
 
   return (
     <main className="pb-4">
-      <span
-        className="block text-white text-4xl mt-3"
-        style={{ color: 'hsl(214, 80%, 28%)' }}
-      >
+      <span className="block text-4xl mt-3 text-theme-darkblue-5">
         Enrolled Curriculums
       </span>
       {(student &&
@@ -191,10 +188,7 @@ export default function (props) {
           message="You haven't enrolled in any curriculums yet."
         />
       )}
-      <span
-        className="block text-white text-4xl mt-3"
-        style={{ color: 'hsl(214, 80%, 28%)' }}
-      >
+      <span className="block text-4xl mt-3 text-theme-darkblue-5">
         Enrolled Courses
       </span>
       <Row className="w-full flex-wrap" gutter={8}>
@@ -228,7 +222,7 @@ export default function (props) {
             ) : null;
           })) || (
           <Alert
-            className="mx-auto text-center rounded"
+            className="mx-auto text-center rounded w-full"
             type="info"
             message="You haven't enrolled in any courses yet."
           />

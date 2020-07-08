@@ -6,10 +6,10 @@
 // Conflicts with antd css
 // @tailwind base;
 
-$themeColor: hsl(214, 79%, 15%);
+$themeColor: rgb(8, 34, 68);
 
 html {
-  background-color: hsl(214, 79%, 15%);
+  background-color: rgb(8, 34, 68);
 }
 
 body {
@@ -90,36 +90,50 @@ code {
 }
 
 .bg-theme-darkblue-5 {
-  background-color: hsl(214, 79%, 30%);
+  background-color: rgb(16, 68, 137);
 }
 
 .bg-theme-darkblue-6 {
-  background-color: hsl(214, 79%, 23%);
+  background-color: rgb(12, 52, 105);
+}
+
+.text-theme-darkblue-5 {
+  color: rgb(16, 68, 137);
 }
 
 .bg-theme-green-5 {
-  background-color: hsl(169, 80%, 52%);
-}
-
-.border-theme-green-5 {
-  border-color: hsl(169, 80%, 52%);
-}
-
-.bg-theme-green-4 {
-  background-color: hsl(169, 80%, 42%);
+  background-color: rgb(35, 231, 195);
   &__hover:hover,
   &__hover:active,
   &__hover:focus {
-    background-color: hsl(169, 80%, 42%);
+    background-color: rgb(35, 231, 195);
+  }
+}
+
+.border-theme-green-5 {
+  border-color: rgb(35, 231, 195);
+  &__hover:hover,
+  &__hover:active,
+  &__hover:focus {
+    background-color: rgb(35, 231, 195);
+  }
+}
+
+.bg-theme-green-4 {
+  background-color: rgb(21, 193, 161);
+  &__hover:hover,
+  &__hover:active,
+  &__hover:focus {
+    background-color: rgb(21, 193, 161);
   }
 }
 
 .border-theme-green-4 {
-  border-color: hsl(169, 80%, 42%);
+  border-color: rgb(21, 193, 161);
   &__hover:hover,
   &__hover:active,
   &__hover:focus {
-    border-color: hsl(169, 80%, 42%);
+    border-color: rgb(21, 193, 161);
   }
 }
 
@@ -127,4 +141,4 @@ code {
   bottom: 0.5rem;
 }
 
-$something: hsl(214, 79%, 25%);
+$something: rgb(13, 57, 114);
