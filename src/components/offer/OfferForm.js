@@ -104,13 +104,13 @@ export default function OfferForm({
             className="media-margin-top"
           >
             <Form.Item
-              label="Generic Offer"
+              label="Topic Category"
               name="category"
               labelAlign={'left'}
               colon={false}
               className="mb-0 inherit"
               rules={[
-                { required: true, message: 'Please select a generic offer' },
+                { required: true, message: 'Please select a topic category' },
               ]}
             >
               <Select className="rounded custom-select" name="category">

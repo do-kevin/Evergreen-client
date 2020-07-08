@@ -33,7 +33,7 @@ export default function OfferCategoryContainer(props) {
   }, [data]);
 
   return (
-    <Card title="Offer Categories" className="shadow-md rounded-md mb-4">
+    <Card title="Topic Categories" className="shadow-md rounded-md mb-4">
       <DataFieldTable
         data={error ? [] : tableData}
         store={datafield}
